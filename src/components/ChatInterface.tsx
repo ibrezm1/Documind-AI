@@ -244,23 +244,26 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
           return (
             <div
               key={msg.id}
-              className={`flex items-start gap-3 ${isUser ? 'flex-row-reverse' : ''}`}
+              className={`flex flex-col gap-1 ${isUser ? 'items-end' : 'items-start'}`}
             >
-              {/* Avatar */}
-              <div 
-                className={`p-2 rounded-xl shrink-0 ${
-                  isUser 
-                    ? 'bg-purple-600 text-white' 
-                    : 'bg-white/60 dark:bg-slate-800 text-purple-600 dark:text-purple-400 border border-gray-200/50 dark:border-gray-700/50'
-                }`}
-              >
-                {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+              {/* Avatar Row */}
+              <div className={`flex items-center gap-1.5 text-[11px] font-semibold text-gray-400 dark:text-gray-500 ${isUser ? 'flex-row-reverse' : ''}`}>
+                <div 
+                  className={`p-1 rounded-md shrink-0 ${
+                    isUser 
+                      ? 'bg-purple-600 text-white' 
+                      : 'bg-white/60 dark:bg-slate-800 text-purple-600 dark:text-purple-400 border border-gray-200/50 dark:border-gray-700/50'
+                  }`}
+                >
+                  {isUser ? <User className="w-3 h-3" /> : <Bot className="w-3 h-3" />}
+                </div>
+                <span>{isUser ? 'You' : 'Assistant'}</span>
               </div>
 
               {/* Message Bubble */}
-              <div className="space-y-1.5 max-w-[80%]">
+              <div className={`space-y-1.5 max-w-[95%] ${isUser ? 'text-right' : 'text-left'}`}>
                 <div 
-                  className={`px-4 py-2.5 rounded-2xl shadow-sm ${
+                  className={`px-4 py-2.5 rounded-2xl shadow-sm text-left ${
                     isUser
                       ? 'bg-purple-600 text-white rounded-tr-none'
                       : 'bg-white/70 dark:bg-slate-900/60 border border-gray-200/50 dark:border-gray-800/30 text-gray-900 dark:text-gray-150 rounded-tl-none'
@@ -347,11 +350,17 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
         {/* Live Streaming Message Display */}
         {streamingText && (
-          <div className="flex items-start gap-3">
-            <div className="p-2 rounded-xl shrink-0 bg-white/60 dark:bg-slate-800 text-purple-600 dark:text-purple-400 border border-gray-200/50 dark:border-gray-700/50">
-              <Bot className="w-4 h-4" />
+          <div className="flex flex-col gap-1 items-start">
+            {/* Avatar Row */}
+            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-gray-400 dark:text-gray-500">
+              <div className="p-1 rounded-md shrink-0 bg-white/60 dark:bg-slate-800 text-purple-600 dark:text-purple-400 border border-gray-200/50 dark:border-gray-700/50">
+                <Bot className="w-3 h-3" />
+              </div>
+              <span>Assistant</span>
             </div>
-            <div className="space-y-1.5 max-w-[80%] animate-in fade-in-30">
+
+            {/* Message Bubble */}
+            <div className="space-y-1.5 max-w-[95%] text-left animate-in fade-in-30">
               <div className="px-4 py-2.5 rounded-2xl rounded-tl-none shadow-sm bg-white/70 dark:bg-slate-900/60 border border-gray-200/50 dark:border-gray-800/30 text-gray-900 dark:text-gray-150">
                 <div className="text-sm leading-relaxed prose dark:prose-invert max-w-none">
                   <ReactMarkdown
@@ -409,10 +418,16 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
         {/* Thinking Indicator */}
         {isStreaming && !streamingText && (
-          <div className="flex items-start gap-3">
-            <div className="p-2 rounded-xl shrink-0 bg-white/60 dark:bg-slate-800 text-purple-600 dark:text-purple-400 border border-gray-200/50 dark:border-gray-700/50">
-              <Bot className="w-4 h-4" />
+          <div className="flex flex-col gap-1 items-start">
+            {/* Avatar Row */}
+            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-gray-400 dark:text-gray-500">
+              <div className="p-1 rounded-md shrink-0 bg-white/60 dark:bg-slate-800 text-purple-600 dark:text-purple-400 border border-gray-200/50 dark:border-gray-700/50">
+                <Bot className="w-3 h-3" />
+              </div>
+              <span>Assistant</span>
             </div>
+
+            {/* Bubble */}
             <div className="px-4 py-3 rounded-2xl rounded-tl-none shadow-sm bg-white/70 dark:bg-slate-900/60 border border-gray-200/50 dark:border-gray-800/30 flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-purple-500 animate-bounce-custom delay-0" />
               <span className="w-2 h-2 rounded-full bg-purple-500 animate-bounce-custom delay-100" />
