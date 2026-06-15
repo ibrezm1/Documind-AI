@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
+import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 
 interface ChatInterfaceProps {
@@ -270,7 +271,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                   ) : (
                     <div className="text-sm leading-relaxed prose dark:prose-invert max-w-none">
                       <ReactMarkdown
-                        remarkPlugins={[remarkMath]}
+                        remarkPlugins={[remarkMath, remarkGfm]}
                         rehypePlugins={[rehypeKatex]}
                         components={{
                           p({ children }) {
@@ -354,7 +355,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
               <div className="px-4 py-2.5 rounded-2xl rounded-tl-none shadow-sm bg-white/70 dark:bg-slate-900/60 border border-gray-200/50 dark:border-gray-800/30 text-gray-900 dark:text-gray-150">
                 <div className="text-sm leading-relaxed prose dark:prose-invert max-w-none">
                   <ReactMarkdown
-                    remarkPlugins={[remarkMath]}
+                    remarkPlugins={[remarkMath, remarkGfm]}
                     rehypePlugins={[rehypeKatex]}
                     components={{
                       p({ children }) { return <p className="mb-2 last:mb-0">{children}</p>; },
@@ -374,6 +375,24 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                             </code>
                           </pre>
                         );
+                      },
+                      table({ children }) {
+                        return (
+                          <div className="overflow-x-auto my-3 rounded-lg border border-gray-200 dark:border-gray-850">
+                            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-850 text-xs text-left">
+                              {children}
+                            </table>
+                          </div>
+                        );
+                      },
+                      thead({ children }) {
+                        return <thead className="bg-gray-55 dark:bg-slate-850 text-gray-700 dark:text-gray-300 font-bold">{children}</thead>;
+                      },
+                      th({ children }) {
+                        return <th className="px-3 py-2 border-b border-gray-200 dark:border-gray-850">{children}</th>;
+                      },
+                      td({ children }) {
+                        return <td className="px-3 py-1.5 border-b border-gray-150 dark:border-gray-850 text-gray-600 dark:text-gray-400">{children}</td>;
                       },
                     }}
                   >
