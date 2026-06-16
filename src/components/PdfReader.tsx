@@ -110,12 +110,13 @@ export const PdfReader: React.FC<PdfReaderProps> = ({ book, onAskAi }) => {
         const container = containerRef.current;
         let scale = 1.2;
         if (container) {
-          const padding = window.innerWidth < 640 ? 16 : 48; // smaller padding on mobile devices
+          const padding = window.innerWidth < 768 ? 0 : 48; // 0 padding on mobile devices for end-to-end width
           const containerWidth = container.clientWidth - padding;
           const unscaledViewport = page.getViewport({ scale: 1.0 });
           scale = containerWidth / unscaledViewport.width;
-          // Clamp scale: readable min 0.55, crisp max 1.5
-          scale = Math.min(Math.max(scale, 0.55), 1.5);
+          // Clamp scale: allow smaller scale on mobile (min 0.3) so it fits width-wise end-to-end, crisp max 1.5
+          const minScale = window.innerWidth < 768 ? 0.3 : 0.55;
+          scale = Math.min(Math.max(scale, minScale), 1.5);
         }
 
         const viewport = page.getViewport({ scale });
@@ -253,7 +254,7 @@ export const PdfReader: React.FC<PdfReaderProps> = ({ book, onAskAi }) => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-white/40 dark:bg-slate-900/20 backdrop-blur-md rounded-2xl border border-gray-200/50 dark:border-gray-800/50 overflow-hidden relative">
+    <div className="flex flex-col h-full bg-white/40 dark:bg-slate-900/20 backdrop-blur-md rounded-none md:rounded-2xl border-0 md:border border-gray-200/50 dark:border-gray-800/50 overflow-hidden relative">
       {/* Header Info Panel */}
       <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200/50 dark:border-gray-800/50 bg-white/20 dark:bg-black/10">
         <div className="flex items-center gap-2">
@@ -271,7 +272,7 @@ export const PdfReader: React.FC<PdfReaderProps> = ({ book, onAskAi }) => {
       <div
         ref={containerRef}
         onMouseUp={handleSelection}
-        className="flex-1 overflow-auto p-6 flex justify-center bg-slate-100 dark:bg-slate-950/60"
+        className="flex-1 overflow-auto p-0 md:p-6 flex justify-center bg-slate-100 dark:bg-slate-950/60"
       >
         {loadingPdf ? (
           <div className="flex flex-col items-center justify-center py-24 space-y-3">
@@ -292,7 +293,7 @@ export const PdfReader: React.FC<PdfReaderProps> = ({ book, onAskAi }) => {
             )}
           </div>
         ) : pdfDoc ? (
-          <div className="relative border border-gray-200 dark:border-gray-800/80 shadow-lg bg-white select-text h-fit max-w-full">
+          <div className="relative border-x-0 md:border-x border-y-0 md:border-y border-gray-200 dark:border-gray-800/80 shadow-none md:shadow-lg bg-white select-text h-fit max-w-full">
             {/* Page Canvas Rendering */}
             <canvas ref={canvasRef} className="block max-w-full" />
             

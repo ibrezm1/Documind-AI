@@ -277,7 +277,7 @@ function App() {
         </div>
 
         {/* Core Layout Containers */}
-        <main className="flex-1 p-4 md:p-6 overflow-hidden min-h-0">
+        <main className="flex-1 p-0 md:p-6 overflow-hidden min-h-0">
           
           {/* Desktop & Tablet side-by-side layout (md screens +) */}
           <div className="hidden md:block h-full w-full">

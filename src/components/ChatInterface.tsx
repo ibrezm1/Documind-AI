@@ -185,7 +185,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
   }
 
   return (
-    <div className="flex flex-col h-full bg-white/40 dark:bg-slate-900/20 backdrop-blur-md rounded-2xl border border-gray-200/50 dark:border-gray-800/50 overflow-hidden">
+    <div className="flex flex-col h-full bg-white/40 dark:bg-slate-900/20 backdrop-blur-md rounded-none md:rounded-2xl border-0 md:border border-gray-200/50 dark:border-gray-800/50 overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200/50 dark:border-gray-800/50 bg-white/20 dark:bg-black/10">
         <div className="flex items-center gap-2">
