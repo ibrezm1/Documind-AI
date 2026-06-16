@@ -266,7 +266,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                   className={`px-4 py-2.5 rounded-2xl shadow-sm text-left ${
                     isUser
                       ? 'bg-purple-600 text-white rounded-tr-none'
-                      : 'bg-white/70 dark:bg-slate-900/60 border border-gray-200/50 dark:border-gray-800/30 text-gray-900 dark:text-gray-150 rounded-tl-none'
+                      : 'bg-white/70 dark:bg-slate-900/60 border border-gray-200/50 dark:border-gray-800/30 text-gray-900 dark:text-gray-200 rounded-tl-none'
                   }`}
                 >
                   {isUser ? (
@@ -292,7 +292,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                           code({ className, children, ...props }) {
                             const inline = !className;
                             return inline ? (
-                              <code className="bg-gray-150 dark:bg-slate-850 px-1 py-0.5 rounded text-xs font-mono text-purple-600 dark:text-purple-400" {...props}>
+                              <code className="bg-gray-100 dark:bg-slate-800 px-1 py-0.5 rounded text-xs font-mono text-purple-600 dark:text-purple-400" {...props}>
                                 {children}
                               </code>
                             ) : (
@@ -305,21 +305,21 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                           },
                           table({ children }) {
                             return (
-                              <div className="overflow-x-auto my-3 rounded-lg border border-gray-200 dark:border-gray-850">
-                                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-850 text-xs text-left">
+                              <div className="overflow-x-auto my-3 rounded-lg border border-gray-200 dark:border-slate-800">
+                                <table className="min-w-full divide-y divide-gray-200 dark:divide-slate-800 text-xs text-left">
                                   {children}
                                 </table>
                               </div>
                             );
                           },
                           thead({ children }) {
-                            return <thead className="bg-gray-55 dark:bg-slate-850 text-gray-700 dark:text-gray-300 font-bold">{children}</thead>;
+                            return <thead className="bg-gray-50 dark:bg-slate-800 text-gray-700 dark:text-gray-300 font-bold">{children}</thead>;
                           },
                           th({ children }) {
-                            return <th className="px-3 py-2 border-b border-gray-200 dark:border-gray-850">{children}</th>;
+                            return <th className="px-3 py-2 border-b border-gray-200 dark:border-slate-800">{children}</th>;
                           },
                           td({ children }) {
-                            return <td className="px-3 py-1.5 border-b border-gray-150 dark:border-gray-850 text-gray-600 dark:text-gray-400">{children}</td>;
+                            return <td className="px-3 py-1.5 border-b border-gray-200 dark:border-slate-800 text-gray-600 dark:text-gray-400">{children}</td>;
                           },
                         }}
                       >
@@ -361,7 +361,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
             {/* Message Bubble */}
             <div className="space-y-1.5 max-w-[95%] text-left animate-in fade-in-30">
-              <div className="px-4 py-2.5 rounded-2xl rounded-tl-none shadow-sm bg-white/70 dark:bg-slate-900/60 border border-gray-200/50 dark:border-gray-800/30 text-gray-900 dark:text-gray-150">
+              <div className="px-4 py-2.5 rounded-2xl rounded-tl-none shadow-sm bg-white/70 dark:bg-slate-900/60 border border-gray-200/50 dark:border-gray-800/30 text-gray-900 dark:text-gray-200">
                 <div className="text-sm leading-relaxed prose dark:prose-invert max-w-none">
                   <ReactMarkdown
                     remarkPlugins={[remarkMath, remarkGfm]}
@@ -374,7 +374,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                       code({ className, children, ...props }) {
                         const inline = !className;
                         return inline ? (
-                          <code className="bg-gray-150 dark:bg-slate-850 px-1 py-0.5 rounded text-xs font-mono text-purple-600 dark:text-purple-400" {...props}>
+                          <code className="bg-gray-100 dark:bg-slate-800 px-1 py-0.5 rounded text-xs font-mono text-purple-600 dark:text-purple-400" {...props}>
                             {children}
                           </code>
                         ) : (
@@ -387,21 +387,21 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                       },
                       table({ children }) {
                         return (
-                          <div className="overflow-x-auto my-3 rounded-lg border border-gray-200 dark:border-gray-850">
-                            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-850 text-xs text-left">
+                          <div className="overflow-x-auto my-3 rounded-lg border border-gray-200 dark:border-slate-800">
+                            <table className="min-w-full divide-y divide-gray-200 dark:divide-slate-800 text-xs text-left">
                               {children}
                             </table>
                           </div>
                         );
                       },
                       thead({ children }) {
-                        return <thead className="bg-gray-55 dark:bg-slate-850 text-gray-700 dark:text-gray-300 font-bold">{children}</thead>;
+                        return <thead className="bg-gray-50 dark:bg-slate-800 text-gray-700 dark:text-gray-300 font-bold">{children}</thead>;
                       },
                       th({ children }) {
-                        return <th className="px-3 py-2 border-b border-gray-200 dark:border-gray-850">{children}</th>;
+                        return <th className="px-3 py-2 border-b border-gray-200 dark:border-slate-800">{children}</th>;
                       },
                       td({ children }) {
-                        return <td className="px-3 py-1.5 border-b border-gray-150 dark:border-gray-850 text-gray-600 dark:text-gray-400">{children}</td>;
+                        return <td className="px-3 py-1.5 border-b border-gray-200 dark:border-slate-800 text-gray-600 dark:text-gray-400">{children}</td>;
                       },
                     }}
                   >
