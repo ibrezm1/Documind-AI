@@ -148,7 +148,7 @@ function App() {
             onClick={() => setIsSidebarOpen(false)}
           />
           {/* Drawer content */}
-          <div className="relative flex flex-col w-72 max-w-xs bg-slate-900 animate-in slide-in-from-left duration-200 h-full">
+          <div className="relative flex flex-col w-72 max-w-xs bg-slate-50 dark:bg-slate-950 border-r border-gray-200 dark:border-gray-800 shadow-2xl animate-in slide-in-from-left duration-200 h-full">
             <Sidebar
               activeBookId={activeBookId}
               onSelectBook={(id) => {
